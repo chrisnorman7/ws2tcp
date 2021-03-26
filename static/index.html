@@ -1,9 +1,36 @@
 <!doctype>
 <html lang="en">
-  <head>
-    <title>MUD Client</title>
-  </head>
-  <body>
-    <h1>MUD Client</h1>
-  </body>
+
+<head>
+  <title>MUD Client</title>
+</head>
+
+<body>
+  <h1>MUD Client</h1>
+  <h2>Coded by Chris Norman</h2>
+  <div id="connectDiv">
+    <h3>Connect</h3>
+    <form id="connectForm">
+      <p><label>Hostname <input type="text" id="hostname" value="toastsoft.net"></label></p>
+      <p><label>Port <input type="number" min="23" max="65535" value="1234" id="port"></label></p>
+      <p><input type="submit" value="Connect"></p>
+    </form>
+  </div>
+  <div id="mainDiv">
+    <h3>Output</h3>
+    <div id="output" aria-atomic="false" aria-live="polite"></div>
+    <hr>
+    <form id="sendForm">
+      <p><label>Command: <input type="text" id="command" autocomplete="off"></label> <input type="submit" value="Send">
+      </p>
+    </form>
+  </div>
+  <script async>
+    let t = new Date().getTime();
+    let e = document.createElement('script');
+    e.src = `main.js?${t}`;
+    document.body.appendChild(e);
+  </script>
+</body>
+
 </html>

@@ -31,23 +31,28 @@ class Connection {
   void onData(dynamic event) async {
     if (event is String) {
       final h = _hostname;
-      final p = _port;
+      var p = _port;
       Socket? s = _socket;
       if (h == null) {
         _hostname = event;
         _ws.add('Hostname is $_hostname.');
       } else if (p == null) {
-        _port = int.tryParse(event);
-        print('Port is $_port.');
-      } else if (s == null) {
+        p = int.parse(event);
+        _port = p;
+        _ws.add('Port is $_port.');
         print('Connecting to $h:$p.');
         s = await Socket.connect(h, p);
         _socket = s;
         _socketListener = s.listen((event) {
           _ws.add(_codec.decode(event));
+        }, onDone: () {
+          print('Closing connection.');
+          _ws.close();
         });
+      } else if (s != null) {
+        s.add(_codec.encode('$event\r\n'));
       } else {
-        s.add(_codec.encode(event));
+        print('Invalid state!');
       }
     } else {
       print('Cannot handle $event.');
@@ -61,14 +66,17 @@ Future<void> main() async {
   final staticFiles = VirtualDirectory('static');
   final server = await HttpServer.bind(InternetAddress.anyIPv4, 8080);
   final webSocketUri = Uri.parse('/ws');
+  final baseUri = Uri.parse('/');
   print('Server running.');
-  final codec = Utf8Codec();
+  final codec = Utf8Codec(allowMalformed: true);
   server.listen((request) async {
     print('${request.method} ${request.uri}');
-    if (request.uri == webSocketUri) {
+    if (request.uri == baseUri) {
+      staticFiles.serveFile(File('static/index.html'), request);
+    } else if (request.uri == webSocketUri) {
       try {
         final ws = await WebSocketTransformer.upgrade(request);
-        print(ws);
+        print('Upgrading to websocket.');
         final con = Connection(ws, codec);
         final subscription =
             ws.listen(con.onData, onDone: con.onDone, onError: con.onError);

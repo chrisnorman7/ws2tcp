@@ -4,9 +4,18 @@
       "source.organizeImports": true
     }
   },
+  "[html]": {
+    "editor.formatOnSave": true,
+    "files.insertFinalNewline": false,
+    "editor.suggest.insertMode": "replace",
+    "gitlens.codeLens.scopes": [
+      "document"
+    ]
+  },
   "cSpell.words": [
     "Pv",
     "analyzer",
+    "toastsoft",
     "typedefs",
     "websockets"
   ],
