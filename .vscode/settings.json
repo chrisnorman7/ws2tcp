@@ -1,0 +1,13 @@
+{
+  "[dart]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
+  },
+  "cSpell.words": [
+    "Pv",
+    "analyzer",
+    "typedefs",
+    "websockets"
+  ],
+}

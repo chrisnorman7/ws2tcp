@@ -1,0 +1,15 @@
+name: ws2tcp
+description: A proxy for forwarding websockets to TCP connections.
+# version: 1.0.0
+# homepage: https://www.example.com
+
+environment:
+  sdk: '>=2.12.0 <3.0.0'
+
+dependencies:
+  http_server:
+#  path: ^1.7.0
+
+dev_dependencies:
+  pedantic:
+  test:
