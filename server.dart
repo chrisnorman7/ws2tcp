@@ -67,7 +67,7 @@ Future<void> main() async {
   final server = await HttpServer.bind(InternetAddress.anyIPv4, 8080);
   final webSocketUri = Uri.parse('/ws');
   final baseUri = Uri.parse('/');
-  print('Server running.');
+  print('Server running on ${server.address.host}:${server.port}.');
   final codec = Utf8Codec(allowMalformed: true);
   server.listen((request) async {
     print('${request.method} ${request.uri}');
