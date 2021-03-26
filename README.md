@@ -8,6 +8,10 @@ A proxy for forwarding websockets to TCP sockets.
 
 * Clone this repository.
 
+* CD into the directory where you cloned the repo.
+
+* Run `pub get`.
+
 * Run `dart server.dart`.*
 
 * Point your browser at [http://localhost:8080].
