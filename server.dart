@@ -20,6 +20,7 @@ class Connection {
 
   void onDone() {
     print('Connection closed.');
+    _socket?.close();
     _socketListener?.cancel();
   }
 
