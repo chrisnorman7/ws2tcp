@@ -12,6 +12,9 @@
       "document"
     ]
   },
+  "[javascript]": {
+    "editor.formatOnSave": true,
+  },
   "cSpell.words": [
     "Pv",
     "analyzer",

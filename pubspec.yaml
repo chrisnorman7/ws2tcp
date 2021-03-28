@@ -8,8 +8,11 @@ environment:
 
 dependencies:
   http_server:
+  json_annotation:
 #  path: ^1.7.0
 
 dev_dependencies:
   pedantic:
   test:
+  json_serializable:
+  build_runner:
