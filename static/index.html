@@ -15,6 +15,7 @@
       <form id="connectForm">
         <p><label>Hostname <input type="text" id="hostname" value="toastsoft.net"></label></p>
         <p><label>Port <input type="number" min="23" max="65535" value="1234" id="port"></label></p>
+        <p><label>Connect string: <input type="text" id="connectString" value="connect wizard"></label></p>
         <p><input type="submit" value="Connect"></p>
       </form>
     </div>
@@ -23,6 +24,7 @@
       <div id="output" aria-atomic="false" aria-live="polite"></div>
       <hr>
       <form id="textForm" hidden>
+        <input type="hidden" id="textCommand">
         <h3 id="textName">No name yet</h3>
         <p><textarea cols="88" id="textEntry"></textarea></p>
         <p><input type="submit" value="Send"></p>
