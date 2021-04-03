@@ -18,6 +18,9 @@
   "cSpell.words": [
     "Pv",
     "analyzer",
+    "ctx",
+    "repr",
+    "str",
     "toastsoft",
     "typedefs",
     "websockets"

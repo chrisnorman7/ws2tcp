@@ -2,9 +2,7 @@ import 'dart:html';
 
 /// Output text.
 ///
-/// This function splits the given lines so that they can be added in separate paragraph elements.
-///
-/// The tab index of each element is set, so you can use tab and shift tab to move between them, and the command box.
+/// If `text` isn't empty, the tab index of the resulting element is set, so you can tab through the various lines of output.
 void output(
 
     /// The text to be shown.
@@ -13,14 +11,12 @@ void output(
   if (outputDiv == null) {
     return null;
   }
-  for (final String line in text.split(RegExp('\r?\n'))) {
-    final p = document.createElement('p');
-    p.innerText = line;
-    if (line.isNotEmpty) {
-      p.tabIndex = 0;
-    }
-    outputDiv.append(p);
+  final p = document.createElement('p');
+  p.innerText = text;
+  if (text.isNotEmpty) {
+    p.tabIndex = 0;
   }
+  outputDiv.append(p);
   outputDiv.scrollTo(0, outputDiv.scrollHeight);
 }
 
